@@ -1,6 +1,8 @@
-# Don't abuse `reduce(_:)`
-
-
+---
+layout: post
+title:  "Don't abuse reduce"
+date:   2019-10-24 10:09:42 -0500
+---
 ## First, why `filter(_:)` is so nice
 
 There's an inverse relationship between generality and clarity. APIs that have a single, narrow purpose are very easy to understand from a quick glance. `filter` is one such example. As soon as you see a call to `filter`, and without even looking at the sequence it's called on or the closure it's passed, you can instantly know a few things:
@@ -40,19 +42,19 @@ extension Sequence {
 	var shittyFirst: Element? {
 		reduce(nil) { acc, element in acc ?? element }
 	}
-	
+
 	var shittyLast: Element? {
 		reduce(nil) { acc, element in element }
 	}
-	
+
 	var shittyCount: Int {
 		reduce(0) { counter, _ in counter + 1 }
 	}
-	
+
 	var shittyIsEmpty: Bool {
 		reduce(true) { _, _ in false }
 	}
-	
+
 	func shittyFilter(_ predicate: (Element) throws -> Bool) rethrows -> [Element] {
 		try reduce(into: []) { acc, element in
 			if try predicate(element) {
@@ -60,16 +62,16 @@ extension Sequence {
 			}
 		}
 	}
-	
+
 	func shittyMap<T>(_ transform: (Element) throws -> T) rethrows -> [T] {
 		try reduce(into: []) { acc, element in acc.append(try transform(element)) }
 	}
-	
+
 	func shittyFlatMap<SegmentOfResult>(_ transform: (Self.Element) throws -> SegmentOfResult) rethrows -> [SegmentOfResult.Element]
 		where SegmentOfResult: Sequence {
 		try reduce(into: []) { acc, element in acc.append(contentsOf: try transform(element)) }
 	}
-	
+
 	func shittyCompactMap<ElementOfResult>(_ transform: (Self.Element) throws -> ElementOfResult?) rethrows -> [ElementOfResult] {
 		try reduce(into: []) { acc, element in
 			if let element = try transform(element) {
@@ -77,10 +79,10 @@ extension Sequence {
 			}
 		}
 	}
-	
+
 	func shittyPrefix(while predicate: (Element) throws -> Bool) rethrows -> ArraySlice<Element> {
 		var done = false
-		return try reduce(into: []) { acc, element in 
+		return try reduce(into: []) { acc, element in
 			if done { return }
 			if try predicate(element) {
 				acc.append(element)
@@ -89,7 +91,7 @@ extension Sequence {
 			}
 		}
 	}
-	
+
 	func shittyPrefix(_ maxLength: Int) -> ArraySlice<Element> {
 		var done = false
 		var i = 0
@@ -172,7 +174,7 @@ array.reduce(into: (toggler: true, result: []) { pair, element in
     if pair.toggler {
     	pair.result.append(element)
     }
-    
+
     pair.toggler.toggle()
 }.result
 ```
@@ -185,7 +187,7 @@ array.reduce(into: []) { acc, element in
     if toggler {
     	acc.append(element)
     }
-    
+
     toggler.toggle()
 }
 ```

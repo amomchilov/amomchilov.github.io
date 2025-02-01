@@ -1,5 +1,8 @@
-# Dates aren't Strings.
-
+---
+layout: post
+title:  "Dates aren't Strings."
+date:   2020-06-30 20:54:09 -0500
+---
 At least seveal times a week, I see StackOverflow questions related to the user struggling to do some simple date processing on strings. The solution is always the same, and it's always simple: don't store dates as strings.
 
 Numbers aren't strings. Dates aren't strings. URLs aren't strings. Just beacuse all of these things can be **expressed** as strings, doesn't mean they should **be** strings in your systems. All those things could also be encoded in binary (indeed, at bottom, all data is binary encoded in memory), a PNG image of hand-written French cursive writing, or a video clip of a sailor signaling using [semaphores](https://en.wikipedia.org/wiki/Semaphore_(programming)).
@@ -21,7 +24,7 @@ Swift has a core set of types known as "common currency types". The set is loose
 | `Foundation.URL`                | A URL to the web, or a local file reference                                    |
 | `Bool`                          | Modeling `true`/`false`                                                        |
 | `Optional<Wrapped>`             | Modeling the absence of a value (as `nil`)                                     |
-| `Result<Success, Failure>`      | Modeling a computation that can succeed or fail                                | 
+| `Result<Success, Failure>`      | Modeling a computation that can succeed or fail                                |
 | `Array<Element>`                | An ordered collection of `Element`                                             |
 | `Set<Element>`                  | An unordered collection unqie `Element`s, with fast `contains` look-ups        |
 | `Dictionary<Key, Value>`        | An unordered association between `Key`s and `Value`s                           |
@@ -38,7 +41,7 @@ Rather than letting this implementation detail of your external dependancy (e.g.
 
 ## The solution
 
-***At the earliest possible moment*** in your database layer, network layer, etc., parse the string date into a proper `Date`. 
+***At the earliest possible moment*** in your database layer, network layer, etc., parse the string date into a proper `Date`.
 
 Likewise, when you need to export data into external systems, serialize your dates into the necessary formats (e.g. `String`), ***at the last possible moment***.
 
@@ -47,5 +50,5 @@ This way, the rest of your app can be a wonderful walled garden, where dates are
 [^1]: > Use the Int type for all general-purpose integer constants and variables in your code, even if they’re known to be nonnegative. Using the default integer type in everyday situations means that integer constants and variables are immediately interoperable in your code and will match the inferred type for integer literal values.
   >
   > Use other integer types only when they’re specifically needed for the task at hand, because of explicitly sized data from an external source, or for performance, memory usage, or other necessary optimization. Using explicitly sized types in these situations helps to catch any accidental value overflows and implicitly documents the nature of the data being used.
-  
+
   [The Swift Programming Language / The Basics / Numeric Type Conversion](https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html#ID324)

@@ -1,5 +1,8 @@
-# Stop writing getters and setters in Swift
-
+---
+layout: post
+title:  "Stop writing getters and setters in Swift"
+date:   2019-04-22 17:21:18 -0500
+---
 I see this time and time again, and it's about time I write an article in one place to consolidate all my thoughts. If you find yourself writing code that looks like this, listen up:
 
 ```swift
@@ -163,7 +166,7 @@ To understand this, we need to have a fuller understanding of what properties ar
 	```
 
 	rather than a function calling syntax:
-		
+
 	```swift
 	print(weatherReport.getTemperatureC())
 	weatherReport.setTemperatureC(100)
