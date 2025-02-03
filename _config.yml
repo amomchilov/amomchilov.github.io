@@ -16,9 +16,6 @@ plugins:
   - jekyll-feed
   # - jekyll-favicon-generator
 
-header_pages:
-  - about.md
-
 locale: "en-CA"
 title: &name "Alex Momchilov"
 title_separator: "|"
@@ -42,14 +39,6 @@ author: # Sidebar data
   bio              : "Staff Engineer @ Shopify"
   location         : "Toronto 🇨🇦"
   links: # icons come from https://fontawesome.com/icons
-    # - icon: "fa-regular fa-envelope"
-    #   label: alex@example.com
-    #   url: example.com
-
-    # - icon: "fa-solid fa-phone"
-    #   label: 123-456-7890
-    #   url: "tel:123-456-7890"
-
     - icon: "fa-solid fa-location-dot"
       label: Toronto, Canada
 
@@ -93,3 +82,13 @@ favicon-generator:
   - file: android-chrome-512.png
     size: 512
     ref: manifest
+
+exclude:
+  - "online-cv/"
+  - "*.sync-conflict*"
+
+sass:
+  sass_dir: _sass
+  style: compressed
+
+host: 0.0.0.0 # Host to entire LAN, not just localhost.

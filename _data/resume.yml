@@ -1,0 +1,209 @@
+sidebar:
+  position: left # position of the sidebar : left or right
+  about: False # set to False or comment line if you want to remove the "how to use?" in the sidebar
+  education: True # set to False if you want education in main section instead of in sidebar
+
+  # Profile information
+  name: Alexander Momchilov
+  tagline: Staff Software Engineer
+  headshot:
+    main: "/assets/avatar/headshot-original.jpeg"
+    srcset:
+      - "/assets/avatar/headshot-original.jpeg 1459w"
+      - "/assets/avatar/headshot-original-110x110@1x.jpeg 110w"
+      - "/assets/avatar/headshot-original-110x110@2x.jpeg 220w"
+      - "/assets/avatar/headshot-original-110x110@3x.jpeg 330w"
+      - "/assets/avatar/headshot-original-204x204@1x.jpeg 204w"
+      - "/assets/avatar/headshot-original-204x204@2x.jpeg 408w"
+
+  contact_info:
+    - font_awesome_icon: "fa-regular fa-envelope"
+      text_online: REDACTED_EMAIL
+      text_print:  REDACTED_EMAIL
+      link: example.com
+      css_classes: "hide-on-web"
+
+    - font_awesome_icon: "fa-solid fa-phone"
+      text_online: REDACTED_PHONE_NUMBER
+      text_print:  REDACTED_PHONE_NUMBER
+      link:   "tel:REDACTED_PHONE_NUMBER"
+      css_classes: "hide-on-web"
+
+    - font_awesome_icon: "fa-solid fa-location-dot"
+      text_online: Toronto, Canada
+      text_print:  Toronto, Canada
+
+    - font_awesome_icon: "fa-solid fa-link"
+      text_online: momchilov.ca
+      text_print:  momchilov.ca
+      link: example.com
+      css_classes: "hide-on-web"
+
+    - font_awesome_icon: "fa-brands fa-linkedin"
+      text_online: LinkedIn
+      text_print: "linkedin.com/in/AMomchilov"
+      link: https://www.LinkedIn.com/in/AMomchilov
+
+    - font_awesome_icon: "fa-brands fa-stack-overflow"
+      text_online: StackOverflow
+      text_print: "stackoverflow.com/users/3141234"
+      link: https://StackOverflow.com/users/3141234/Alexander
+
+    - font_awesome_icon: "fa-brands fa-github"
+      text_online: "@AMomchilov"
+      text_print:  "github.com/AMomchilov"
+      link: https://GitHub.com/AMomchilov
+
+  expertise:
+    - heading: "Expert in"
+      body: |
+        Swift, AppKit/Cocoa macOS&nbsp;development
+
+        Ruby, Ruby on Rails
+
+        Distributed systems, GraphQL
+
+        Redis, Kafka, PostgreSQL
+
+    - heading: "Proficient with"
+      body: |
+        React, TypeScript, Javascript
+
+        React, HTML/CSS
+
+        C#/Java backend development
+
+        Linux, Docker, Bash, Git, Python
+
+        Objective-C
+
+        Elasticsearch, Memcached
+
+    - heading: "Experienced in"
+      body: |
+        React Native, Rust, Haskell, Elixir
+
+        <span style="white-space: nowrap">C/C++</span>, OpenGL, iOS/SwiftUI
+
+career-profile:
+  title: Career Profile
+  summary: |
+    Adaptable, self-driven software developer looking to apply a life-long passion for computer science
+    to solve difficult problems, and build complex systems that improve people's lives.
+
+timeline:
+  - organization: "[Shopify](https://shopify.com)" # TODO: implement locations
+    icon: /assets/images/organization_logos/shopify.svg
+    subitems:
+      - title: Staff Software Engineer
+        date: { start: "2024-09-01", end: "Present" }
+        location: "Toronto"
+        details: |
+          I lead the typing group on the Ruby Developer Experience (DX) team, responsible for building tooling that empowers developers to build faster and catch bugs before they hit production. Our work focuses around Sorbet, a static type system for Ruby developed at Stripe. Notable work:
+          - Championed the ongoing effort to incorporate [Prism](https://github.com/ruby/rbs) (Ruby's new standard parser) to speed up Sorbet, which also makes it easier to adopt new Ruby syntax as Ruby evolves.
+          - I was a core contributor to integrating [RBS](https://github.com/ruby/rbs) (Ruby's new standard syntax for types) into Sorbet. I will be presenting this work at [RubyKaigi 2025](https://rubykaigi.org/2025/) in Japan, the world's largest Ruby conference.
+          - As a maintainer of Tapioca (Shopify's open-source Ruby type-generation tool), I facilitated community contributions, helping many individuals open their first-ever open-source pull requests.
+      - title: Senior Software Engineer
+        date: { start: "2022-03-01", end: "2024-09-01" }
+        location: "Toronto"
+        details: |
+          - Developed a server-driven UI framework for the Shop app that allowed our Ruby on Rails backend to dynamically update the content on our React Native iOS and Android apps.
+          - Built feature flag, experiment, and GraphQL infrastructure that made our server APIs more flexible to future changes, while preserving backward compatibility with existing app versions.
+          - Empowered the merchandising and marketing teams to publish seasonal content, such as for Black Friday/Cyber Monday, Boxing Day, holidays, etc.
+
+
+      - title: Software Engineer
+        date: { start: "2019-09-01", end: "2022-03-01" }
+        location: "Toronto"
+        details: |
+          - I was a core contributor to [the Shop app](https://apps.apple.com/app/id1223471316) during its [transition](https://www.shopify.com/blog/introducing-shop) from Arrive (the package tracker) to Shop, the all-in-one shopping app. I was central to building the backend systems for the shopping features we take for granted, like
+          product pages, collections, carts, in-app checkout, etc.
+          - Developed a system to automatically review submissions the [Shopify App Store](https://apps.shopify.com/), enforcing policies to protect merchants and customers from malicious apps.
+
+  - organization: "[Amazon](https://amazon.com)"
+    icon: /assets/images/organization_logos/amazon.svg
+    subitems:
+      - title: Software Development Engineer
+        date: { start: "2018-03-01", end: "2019-03-01" }
+        location: "Vancouver"
+        details: |
+          - Maintained and optimized the execution engine at the heart of Amazon's fulfillment pipeline, fulfilling over a billion shipments annually.
+          - Architected and implemented a petabyte-scale Elasticsearch cluster to index our service logs, empowering my team to easily resolve customer issues.
+          - Migrating the system off OracleDB and onto DynamoDB and Amazon RDS (PostgreSQL), for better global-scale availability and reliability.
+
+      - title: Software Development Engineer Intern
+        date: { start: "2017-05-01", end: "2017-08-01" }
+        location: "Seattle"
+        details: |
+          - Implemented an algorithm that suggests more optimal quantities for restock orders to merchants, by integrating aggregate buyer behavioural signals.
+          - As the sole owner, I implemented and tested this solution over the course of my three month internship with a great deal of autonomy.
+          - My project resulted in lower operational overhead for Amazon merchants, lower prices, and increased customer satisfaction by mitigating out-of-stock scenarios.
+
+  - title: Technical Developer
+    organization: "[The Jonah Group](https://www.linkedin.com/company/jonahgroup)"
+    date: { start: "2016-05-01", end: "2017-08-01" }
+    location: "Toronto"
+    icon: /assets/images/organization_logos/jonah_group.svg
+    details: |
+      - Collaborated in a team of four on the core business application for software project management, employee time tracking, and automated invoicing.
+      - Quickly became an effective member of the team, despite having no prior exposure to the technologies used, such as C#, ASP.NET,  TeamCity, and Git.
+      - Led the modernization of the development process by migrating from SVN to Git Flow, streamlining continuous integration, and improving automated testing.
+
+  - title: Software Developer
+    organization: "[University Health Network](https://uhn.ca)"
+    date: { start: "2015-09-01", end: "2015-12-01" }
+    location: "Toronto"
+    icon: /assets/images/organization_logos/university_health_network_wordmark.svg
+    css_classes: "page-break"
+    details: |
+      - Our team focused on development of a patient management system responsible for handling hundreds of thousands of patients annually.
+      - Gained my first exposure to enterprise technology, such as IBM WebSphere Portal, Java EE, Java Portlets, Oracle SQL, SVN, Maven, and others.
+      - Completed development of a JavaScript subsystem that logs lifetime bone radiation exposure of patients in order to manage radiotherapy side effects.
+
+education:
+  - title: Honours BSc in Computer Science, with distinction
+    organization: "[Ryerson University](https://ryerson.ca)"
+    date: { start: "2013-01-01", end: "2017-01-01" }
+    location: "Toronto"
+    icon: /assets/images/organization_logos/ryerson.svg
+    details: |
+      - Minor in Mathematics
+
+open_source_contributions:
+  - project: "[Ruby](https://ruby-lang.org)"
+    title: "The primary interpreter for the Ruby programming language, written in C"
+    date: { start: "2024-01-01", end: "Present" }
+    icon: /assets/images/organization_logos/ruby.svg
+    details: |
+      - [Optimized](https://github.com/ruby/ruby/pull/9274) one of the core methods, to reduce memory allocations and improve performance.
+      - [Fixed](https://github.com/ruby/ruby/pull/11445) a bug in the integration of Prism, the new standard parser. This was crucial to ship in
+        time for Prism to become the new default parser in [Ruby 3.4](https://www.ruby-lang.org/en/news/2024/12/25/ruby-3-4-0-released).
+      - [Improved](https://github.com/ruby/ruby/pull/12320) the "getting started" documentation, to make it easier for new developers to start   contributing on the Ruby interpreter.
+  - project: "[Sorbet](https://sorbet.org)"
+    title: "A fast type-checker for Ruby written in C++"
+    date: { start: "2023-01-01", end: "Present" }
+    icon: /assets/images/organization_logos/sorbet.svg
+    details: |
+      - Sorbet has its own bespoke Ruby parser, which is non-standard and difficult to maintain.
+        I'm working on a large-scale project to [replace it](https://github.com/sorbet/sorbet/pull/8122) with [Prism](https://github.com/ruby/prism), Ruby's new standard parser.
+      - [Contributed many](https://github.com/sorbet/sorbet/pulls?q=sort%3Aupdated-desc+is%3Apr+is%3Aclosed+author%3Aamomchilov) bug fixes and type annotations.
+  - project: "[Swift Algorithms](https://github.com/apple/swift-algorithms)"
+    title: "A first-party package of sequence and collection algorithms"
+    date: { start: "2023-01-01", end: "Present" }
+    icon: /assets/images/organization_logos/swift.svg
+    details: |
+      - [Contributed](https://github.com/apple/swift-algorithms/pull/197) new [`grouped(by:)`](https://swiftpackageindex.com/apple/swift-algorithms/main/documentation/algorithms/swift/sequence/grouped(by:)) and [`keyed(by:)`](https://swiftpackageindex.com/apple/swift-algorithms/main/documentation/algorithms/swift/sequence/keyed(by:)) APIs to Swift Algorithms for grouping collection elements by a key.
+      - [Contributed](https://github.com/apple/swift-algorithms/pull/224) new [`ends(with:)`](https://swiftpackageindex.com/apple/swift-algorithms/main/documentation/algorithms/swift/bidirectionalcollection/ends(with:)) API for checking if a collection ends with a particular suffix.
+
+volunteering:
+  - organization: "First Robotics Team #854"
+    title: "My high school's team competing in the [FIRST robotics competition](https:///firstinspires.org)"
+    time: "2013 - 2015"
+    date: { start: "2013-06-01", end: "2015-06-01" }
+    # title:
+    icon: /assets/images/organization_logos/FIRST_robotics.svg
+    details: |
+      - Educated high school students in the mechanics, electronics, and programming
+        skills required for building sophisticated teleoperated and autonomous robots.
+      - Our team's achievements [were acknowledged by our local representative in
+        Parliament](https://www.youtube.com/watch?v=RlTKoIsz0ms) as a success story for the government's investment in public STEM education.

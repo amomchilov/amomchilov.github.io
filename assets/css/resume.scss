@@ -1,0 +1,352 @@
+---
+
+---
+@charset "utf-8";
+
+@import "external/font-awesome";
+
+// @import "minimal-mistakes/variables";
+// @import "minimal-mistakes/mixins";
+
+$primary-theme-color: #42A8C0;
+
+$text-color: #3F4650;
+$text-color-grey-light: #97AAC3;
+$text-color-grey-medium: #666;
+$text-color-grey-dark: #545E6C;
+
+$paper-white: #f5f5f5;
+
+$main-padding: 15px; // The main unit of padding, often multiplied by 2.
+
+$resume-font: Roboto, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", "Apple Color Emoji", Helvetica, Arial, sans-serif;
+$code-font-family: "Roboto Mono", "Menlo", "Inconsolata", "Consolas", "Ubuntu Mono", "Liberation Mono", "Courier New", monospace;
+
+@mixin box-shadow($shadow...) {
+    -webkit-box-shadow: $shadow;
+       -moz-box-shadow: $shadow;
+            box-shadow: $shadow;
+}
+
+// Reset the default browser-provided whitespace on common elements
+body, h1, h2, h3, h4, h5, h6,
+p, blockquote, pre, ol, ul {
+    margin: 0;
+    padding: 0;
+}
+
+// Set the default vertical spacing on common elements
+h1, h2, h3, h4, h5, h6,
+p, blockquote, pre, ul, ol {
+    margin-bottom: $main-padding;
+}
+
+main {
+    display: block; // "block" is the usual default, except IE 11. This fixes that.
+}
+
+ul, ol {
+    margin-left: $main-padding;
+}
+
+code {
+    font-family: $code-font-family;
+    border: 1px solid lighten(#828282, 40%);
+    border-radius: 3px;
+    padding: 0 0.2em;
+    background-color: #eeeeff; // Slightly lighter than the paper background colour
+}
+
+#resume-wrapper { // The `<main>` element that represents the whole pages
+    width: 8.5in;
+    height: #{11in * 2}; // 2 letter-sized pages
+    margin: #{$main-padding * 2} auto; // leave room at the top and bottom for the paper drop-shadow.
+    box-sizing: border-box;
+    background: $paper-white;
+
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+
+    // The paper drop-shadow that makes the page look lifted off the surface
+    @include box-shadow(0px 5px 10px rgba(0, 0, 0, 0.2));
+
+    font-family: $resume-font;
+    line-height: 18px;
+
+    font-size: 12px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: $text-color-grey-medium;
+    a {
+        color: darken($text-color-grey-medium, 15%);
+    }
+
+
+    h1 { font-size: 2.00em; }
+    h2 { font-size: 1.50em; }
+    h3 { font-size: 1.17em; }
+    h4 { font-size: 1.00em; }
+    h5 { font-size: 0.83em; }
+    h6 { font-size: 0.67em; }
+
+    h1, h2, h3, h4, h5, h6 {
+        line-height: 1.5;
+        font-weight: 400;
+    }
+
+    h1, h2, h3 {
+        a {
+            text-decoration: none;
+        }
+    }
+
+    h1.markdownified,
+    h2.markdownified,
+    h3.markdownified,
+    h4.markdownified,
+    h5.markdownified,
+    h6.markdownified {
+        p { // "markdownify" wraps the content in a p tag, which adds padding by default. Remove it.
+            margin: 0;
+            a {
+                color: inherit;
+            }
+            a:visited, a:active {
+                // YOLO !important
+                color: inherit;
+                text-decoration: none !important;
+            }
+        }
+    }
+}
+
+#sidebar-wrapper { // The sidebar that extends across all pages
+    grid-column: span 3;
+    order: 1;
+    color: white;
+    background: $primary-theme-color;
+    height: 100%; // Fill the sidebar colour across all pages
+
+    #sidebar { // The first-page sidebar content
+        height: 11in; // Limit it to the first page, for the flex items to fill nicely
+        display: flex;
+        flex-direction: column;
+    }
+
+    #headshot {
+        width: 100%;
+        height: auto;
+    }
+
+    #profile-container {
+        padding: $main-padding;
+        text-align: center;
+        background: darken($primary-theme-color, 10%);
+
+        .name {
+            font-weight: 900;
+        }
+
+        .tagline {
+            color: rgba(256, 256, 256, 0.7);
+            font-size: 14px;
+            font-weight: 400;
+            margin-bottom: 0;
+        }
+    }
+
+    #sidebar-containers {
+        flex-grow: 1; // Fill the remaining first-page space in the sidebar
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
+        margin: $main-padding;
+
+        // Causes the flexbox padding to compress a bit, and leaves some whitespace before the page break
+        padding-bottom: $main-padding * 2;
+    }
+
+    .sidebar-list-container {
+        .contact-list {
+            font-size: 14px;
+
+            margin-top: $main-padding;
+            margin-bottom: 0;
+
+            ul {
+                list-style-position: inside;
+            }
+
+            li {
+                &:not(:last-child) {
+                    margin-bottom: 15px;
+                }
+
+                .text_print { display: none; } // Hide the print-specific text by default
+                @media print { // Swap the web text with print text when printing
+                    .text_online { display: none;   }
+                    .text_print  { display: inline; }
+                }
+
+                a {
+                    color: white;
+                }
+            }
+        }
+    }
+
+    .experience {
+        font-size: 12px;
+
+        // Compress the lines together to fit tighter
+        h2, p { margin-bottom: 0; }
+    }
+}
+
+#main-wrapper { // The main content area that extends across all pages
+    grid-column: span 9;
+    order: 2;
+    padding: $main-padding;
+
+    h1 {
+        font-weight: 500;
+        font-size: 20px;
+        // text-transform: uppercase;
+        color: darken($primary-theme-color, 15%);
+    }
+
+    .timeline {
+        list-style: none;
+        padding: 0;
+        margin-left: 0;
+
+        .composite-item, .item {
+            display: grid;
+            column-gap: $main-padding;
+
+            .timeline-icon {
+                grid-row: 1 / span 2;
+                grid-column: 1;
+                align-self: center;
+                height: 30px;
+                width:  30px;
+            }
+
+            .timeline-org {
+                grid-row: 1;
+                grid-column: 2 / span 2;
+                align-self: center;
+                margin: 0;
+                color: $text-color-grey-dark;
+                font-weight: bold;
+            }
+
+            .timeline-title {
+                grid-row: span 1;
+                grid-column: 2;
+                align-self: center;
+                margin: 0;
+                color: $text-color-grey-medium;
+            }
+
+            .timeline-time {
+                grid-row: span 1;
+                grid-column: 3;
+                align-self: center;
+                justify-self: end;
+                margin: 0;
+                color: $text-color-grey-light;
+
+                @media print {
+                    color: $text-color-grey-light;
+                }
+            }
+
+            .timeline-details {
+                grid-row: span 1;
+                grid-column: 2 / span 2;
+
+                p:first-child, ul:first-child li:first-child {
+                    margin-top: 0.5em;
+                }
+
+                li:not(:last-child) { // TODO: Margins should naturally overlap. Can I remove this?
+                    margin-bottom: 0.25em;
+                }
+
+                p, ul {
+                    margin-bottom: 0.5em;
+                }
+            }
+        }
+
+        .composite-item {
+            grid-template-columns: auto 1fr auto;                // icon | body  | time
+            grid-template-rows: 1fr repeat(auto-fill, 1fr auto); // org  | title | details | title | details | ...
+
+            .subitem {
+                display: contents;
+            }
+        }
+
+        .item {
+            grid-template-columns: auto 1fr auto; // icon | body  | time
+            grid-template-rows: 1fr 1fr auto;     // org  | title | details
+        }
+    }
+}
+
+// Print-specific styles
+
+.hide-on-web {
+    display: none;
+}
+
+@media print {
+    .hide-on-web {
+        display: revert;
+    }
+
+    body * {
+        visibility: hidden // Hide everything to start
+    }
+
+    #resume-wrapper * { // Bring back just the Resume.
+        visibility: visible;
+    }
+
+    .site-header, .site-footer {
+        display: none;
+    }
+
+    #resume-wrapper {
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    code {
+        background: inherit;
+        border-color: transparent; // Keep the border but make it invisible, so that things don't shift.
+        padding: 0;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    li.page-break { // Add some padding at page breaks.
+        padding-top: $main-padding;
+        break-before: always;
+    }
+}
+
+@page {
+    size: letter;
+    margin: 0;
+}

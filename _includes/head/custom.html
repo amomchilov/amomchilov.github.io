@@ -23,3 +23,11 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png" />
 <meta name="apple-mobile-web-app-title" content="Momchilov" />
 <link rel="manifest" href="/site.webmanifest" />
+
+{% if page.custom_head %}
+  {% if page.custom_head.preloaded_css %}
+    {% for stylesheet in page.custom_head.preloaded_css %}
+      <link rel="preload" href="{{ stylesheet | relative_url }}" as="style" />
+    {% endfor %}
+  {% endif %}
+{% endif %}
