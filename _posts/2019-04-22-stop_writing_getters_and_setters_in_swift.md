@@ -125,13 +125,13 @@ public class WeatherReport {
 	}
 
 	// Updated getTemperatureF is no longer a simple getter, but instead a function that derives
-	//  its Fahrenheit value from the Celcius value that actually stored in an instance variable.
+	//  its Fahrenheit value from the Celsius value that actually stored in an instance variable.
 	public double getTemperatureF() {
 		return this.getTemperatureC() * 9.0/5.0 + 32.0;
 	}
 
 	// Updated getTemperatureF is no longer a simple setter, but instead a function
-	// that updates the celcius value stored in the instance variable by first converting from Fahrenheit
+	// that updates the celsius value stored in the instance variable by first converting from Fahrenheit
 	public void setTemperatureF(double temperatureF) {
 		this.setTemperatureC((temperatureF - 32.0) * 5.0/9.0);
 	}

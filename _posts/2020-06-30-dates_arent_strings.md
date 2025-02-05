@@ -3,15 +3,15 @@ layout: post
 title:  "Dates aren't Strings."
 date:   2020-06-30 20:54:09 -0500
 ---
-At least seveal times a week, I see StackOverflow questions related to the user struggling to do some simple date processing on strings. The solution is always the same, and it's always simple: don't store dates as strings.
+At least several times a week, I see StackOverflow questions related to the user struggling to do some simple date processing on strings. The solution is always the same, and it's always simple: don't store dates as strings.
 
-Numbers aren't strings. Dates aren't strings. URLs aren't strings. Just beacuse all of these things can be **expressed** as strings, doesn't mean they should **be** strings in your systems. All those things could also be encoded in binary (indeed, at bottom, all data is binary encoded in memory), a PNG image of hand-written French cursive writing, or a video clip of a sailor signaling using [semaphores](https://en.wikipedia.org/wiki/Semaphore_(programming)).
+Numbers aren't strings. Dates aren't strings. URLs aren't strings. Just because all of these things can be **expressed** as strings, doesn't mean they should **be** strings in your systems. All those things could also be encoded in binary (indeed, at bottom, all data is binary encoded in memory), a PNG image of hand-written French cursive writing, or a video clip of a sailor signaling using [semaphores](https://en.wikipedia.org/wiki/Semaphore_(programming)).
 
 But that would be nonsense. Use `Int` (or `Double`/`Decimal`), `Date`, and `URL`, respectively.
 
 ## Common currency types
 
-Swift has a core set of types known as "common currency types". The set is loosely defined, but consists of common types we can use to transact with other peices of code. They're limited enough that everybody should be able to have access to them all, but varied enough that they're expressive of most basic needs. In Swift, these types are:
+Swift has a core set of types known as "common currency types". The set is loosely defined, but consists of common types we can use to transact with other pieces of code. They're limited enough that everybody should be able to have access to them all, but varied enough that they're expressive of most basic needs. In Swift, these types are:
 
 | Type                            | Purpose                                                                        |
 | ------------------------------- | ------------------------------------------------------------------------------ |
@@ -26,18 +26,18 @@ Swift has a core set of types known as "common currency types". The set is loose
 | `Optional<Wrapped>`             | Modeling the absence of a value (as `nil`)                                     |
 | `Result<Success, Failure>`      | Modeling a computation that can succeed or fail                                |
 | `Array<Element>`                | An ordered collection of `Element`                                             |
-| `Set<Element>`                  | An unordered collection unqie `Element`s, with fast `contains` look-ups        |
+| `Set<Element>`                  | An unordered collection unique `Element`s, with fast `contains` look-ups        |
 | `Dictionary<Key, Value>`        | An unordered association between `Key`s and `Value`s                           |
 
-If push comes to shove, you could find a way to express all of these as strings, but that doesn't mean you should. You won't see a date-arithemtic API in `Foundation` that deals with `String`. Imagine if you had an algorithm that expected an array, but took it as a common seperated string like `"1, 2, 3"` instead of `[1, 2, 3]`. It just doesn't make any sense.
+If push comes to shove, you could find a way to express all of these as strings, but that doesn't mean you should. You won't see a date-arithmetic API in `Foundation` that deals with `String`. Imagine if you had an algorithm that expected an array, but took it as a common separated string like `"1, 2, 3"` instead of `[1, 2, 3]`. It just doesn't make any sense.
 
-Interestingly, there's no standard type for human curreny/money. I often see `Int`/`Double`/`Decimal` abused for the purpose, by being used directly, rather than making a `Currency` struct that contains one of those. It would be nice if that was standardized, once and for all.
+Interestingly, there's no standard type for human currency/money. I often see `Int`/`Double`/`Decimal` abused for the purpose, by being used directly, rather than making a `Currency` struct that contains one of those. It would be nice if that was standardized, once and for all.
 
 ## The problem
 
 `Foundation.Date` is only available within your Swift program. It's not a standardized data type, so all external dates (such as from network calls, databases, files read from disk, etc.) that come into your system will come in as some other format (usually `String` or `Data`).
 
-Rather than letting this implementation detail of your external dependancy (e.g. database) metastisize throughout your code base, isolate it and abstract it.
+Rather than letting this implementation detail of your external dependency (e.g. database) metastasize throughout your code base, isolate it and abstract it.
 
 ## The solution
 

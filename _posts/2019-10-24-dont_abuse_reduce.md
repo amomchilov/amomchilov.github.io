@@ -124,7 +124,7 @@ print(Array(1...5).shittyPrefix(3))
 
 `reduce` is pretty much exactly as powerful as `forEach`. The `reduce`'s accumulator can be used to maintain state, but you can do that with any old variable, just by capturing in the closure you pass to `forEach`. Neither of these APIs is able to skip iterations or bail early.
 
-In fact, Ruby's `Enumerable` module (their equivalent of Swift's `Sequence` protocol) only requires that you implement an `each` method (equivalent of `forEach`), which they use to implement all other APIs within `Enumerable`. However, this is far from perfect, because it means that even simple operations like `count`, `first`, `last`, `isEmpty`, etc. become `O(n)`. So often times, they'll be implemented seperately to take advantage of the implementation details of the particular sequence's implementation, for faster performance.
+In fact, Ruby's `Enumerable` module (their equivalent of Swift's `Sequence` protocol) only requires that you implement an `each` method (equivalent of `forEach`), which they use to implement all other APIs within `Enumerable`. However, this is far from perfect, because it means that even simple operations like `count`, `first`, `last`, `isEmpty`, etc. become `O(n)`. So often times, they'll be implemented separately to take advantage of the implementation details of the particular sequence's implementation, for faster performance.
 
 ## Comparison to `for`
 
@@ -167,7 +167,7 @@ let dict = Dictionary(uniqueKeysWithValues: zip(keys, values))
 
 ### Keeping complex state in the accumulator
 
-I can't think of a concrete example right now, but I've seen people trying to wrangle really complex state (usually a tuple) as the accumulator of a reducation, with the aim of having their entire compuration expressed in one expression, like this code to get an array of every other element:
+I can't think of a concrete example right now, but I've seen people trying to wrangle really complex state (usually a tuple) as the accumulator of a reduction, with the aim of having their entire computation expressed in one expression, like this code to get an array of every other element:
 
 ``` Swift
 array.reduce(into: (toggler: true, result: []) { pair, element in

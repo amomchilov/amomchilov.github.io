@@ -63,7 +63,7 @@ This is probably *not* what you need. I can't think of many situations in which 
 
 ### Using indices when you don't need to
 
-Iterating the indexes of an array when you don't need to, just introduces unecessary complexity. For example in this code:
+Iterating the indexes of an array when you don't need to, just introduces unnecessary complexity. For example in this code:
 
 ``` Swift
 let array = ["A", "B", "C" ]
