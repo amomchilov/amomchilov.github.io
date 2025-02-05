@@ -11,7 +11,7 @@ group :jekyll_plugins do
   # gem "jekyll-favicon-generator", "~> 0.1.1"
 end
 
-gem "minima", "~> 2.5" # Jekyll's default theme
+gem "minimal-mistakes-jekyll", "~> 4.26.2" # Jekyll theme
 
 # Windows and JRuby does not include zoneinfo files, so bundle the tzinfo-data gem
 # and associated library.

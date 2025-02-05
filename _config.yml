@@ -30,7 +30,9 @@ github_username:  amomchilov
 linkedin_username: amomchilov
 
 # Build settings
-theme: minima
+theme: minimal-mistakes-jekyll
+minimal_mistakes_skin: "default"
+
 plugins:
   - jekyll-feed
   # - jekyll-favicon-generator
