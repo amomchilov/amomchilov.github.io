@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title:  "Stop writing getters and setters in Swift"
 date:   2019-04-22 17:21:18 -0500
 ---

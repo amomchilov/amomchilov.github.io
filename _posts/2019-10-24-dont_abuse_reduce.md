@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title:  "Don't abuse reduce"
 date:   2019-10-24 10:09:42 -0500
 ---

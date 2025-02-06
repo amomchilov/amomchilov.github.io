@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title:  "Proper Array Iteration"
 date:   2020-06-30 17:48:34 -0500
 ---

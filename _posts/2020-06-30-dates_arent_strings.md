@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title:  "Dates aren't Strings."
 date:   2020-06-30 20:54:09 -0500
 ---
