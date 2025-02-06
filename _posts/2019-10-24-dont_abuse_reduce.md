@@ -1,6 +1,8 @@
 ---
 layout: single
 title:  "Don't abuse reduce"
+excerpt: >-
+ The `reduce` function can express almost anything, so it communicates almost nothing.
 date:   2019-10-24 10:09:42 -0500
 ---
 ## First, why `filter(_:)` is so nice

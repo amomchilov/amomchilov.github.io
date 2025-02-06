@@ -1,6 +1,8 @@
 ---
 layout: single
 title:  "Proper Array Iteration"
+excerpt: >-
+  You probably don't need the indices.
 date:   2020-06-30 17:48:34 -0500
 ---
 # The bad ways

@@ -1,6 +1,7 @@
 ---
 layout: single
 title:  "Stop writing getters and setters in Swift"
+excerpt: "What getters and setters are for, and why you don't need to manually write them in Swift."
 date:   2019-04-22 17:21:18 -0500
 ---
 I see this time and time again, and it's about time I write an article in one place to consolidate all my thoughts. If you find yourself writing code that looks like this, listen up:
