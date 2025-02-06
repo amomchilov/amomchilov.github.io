@@ -3,17 +3,6 @@
 #
 # Use 'bundle exec jekyll serve --livereload` for live-reloading pages on changes.
 
-title: Alex Momchilov
-email: your-email@example.com
-description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://momchilov.ca" # the base hostname & protocol for your site, e.g. http://example.com
-github_username:   amomchilov
-linkedin_username: amomchilov
-
 # Build settings
 theme: minimal-mistakes-jekyll
 
@@ -28,6 +17,52 @@ plugins:
 
 header_pages:
   - about.md
+
+locale: "en-CA"
+title: &name "Alex Momchilov"
+title_separator: "|"
+subtitle: ~
+description: &description >-
+  Hey I'm Alex, a software engineer based in Toronto.
+url: "https://momchilov.ca"
+baseurl: "" # the subpath of your site, e.g. /blog
+repository: "amomchilov/amomchilov.github.io"
+
+defaults: # Default "front matter" for each page. https://jekyllrb.com/docs/configuration/front-matter-defaults/
+  - scope:
+      path: "" # an empty string here means all files in the project
+    values:
+      author_profile: true
+      share: true
+
+author: # Sidebar data
+  name             : *name # *name is a YAML reference pointing to the &anchor earlier
+  avatar           : "/assets/avatar/headshot-original-110x110@2x.jpeg"
+  bio              : "Staff Engineer @ Shopify"
+  location         : "Toronto 🇨🇦"
+  links: # icons come from https://fontawesome.com/icons
+    # - icon: "fa-regular fa-envelope"
+    #   label: alex@example.com
+    #   url: example.com
+
+    # - icon: "fa-solid fa-phone"
+    #   label: 123-456-7890
+    #   url: "tel:123-456-7890"
+
+    - icon: "fa-solid fa-location-dot"
+      label: Toronto, Canada
+
+    - icon: "fa-brands fa-github"
+      label: "GitHub"
+      url: https://github.com/AMomchilov
+
+    - icon: "fa-brands fa-linkedin"
+      label: LinkedIn
+      url: https://www.LinkedIn.com/in/AMomchilov
+
+    - icon: "fa-brands fa-stack-overflow"
+      label: StackOverflow
+      url: https://StackOverflow.com/users/3141234/Alexander
 
 favicon-generator:
   source: assets/favicons/favicon.svg # by default automatically find favicon.* image in source root
