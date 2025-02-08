@@ -4,7 +4,7 @@
 # Use 'bundle exec jekyll serve --livereload` for live-reloading pages on changes.
 
 # Build settings
-theme: minimal-mistakes-jekyll
+remote_theme: "mmistakes/minimal-mistakes@4.26.2"
 
 minimal_mistakes_skin: "default"
 # Automatically switch between the light and dark skins. Based on:
@@ -12,6 +12,7 @@ minimal_mistakes_skin: "default"
 minimal_mistakes_dark_skin: "dark"
 
 plugins:
+  - jekyll-include-cache
   - jekyll-feed
   # - jekyll-favicon-generator
 
