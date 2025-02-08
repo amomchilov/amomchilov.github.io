@@ -1,6 +1,8 @@
 ---
-layout: post
+layout: single
 title:  "Don't abuse reduce"
+excerpt: >-
+ The `reduce` function can express almost anything, so it communicates almost nothing.
 date:   2019-10-24 10:09:42 -0500
 ---
 ## First, why `filter(_:)` is so nice
@@ -35,9 +37,83 @@ Generality is good, because it means that `reduce` can be useful in a broad rang
 14. `dropLast(_:)`
 15. ... and others
 
-<details><summary>Don't believe me? Here are some sample implementations:</summary>
+Don't believe me? Check out the sample implementations in the [appendix](#appendix-example-implementations).
 
-``` Swift
+## Comparison to `forEach`
+
+`reduce` is pretty much exactly as powerful as `forEach`. The `reduce`'s accumulator can be used to maintain state, but you can do that with any old variable, just by capturing in the closure you pass to `forEach`. Neither of these APIs is able to skip iterations or bail early.
+
+In fact, Ruby's `Enumerable` module (their equivalent of Swift's `Sequence` protocol) only requires that you implement an `each` method (equivalent of `forEach`), which they use to implement all other APIs within `Enumerable`. However, this is far from perfect, because it means that even simple operations like `count`, `first`, `last`, `isEmpty`, etc. become `O(n)`. So often times, they'll be implemented separately to take advantage of the implementation details of the particular sequence's implementation, for faster performance.
+
+## Comparison to `for`
+
+`reduce` is not as powerful as `for` loops, however. `for` loops can support `continue`, `break` and `return` (from the parent scope, not merely the `for` loop). You can use `try`/`catch` to mimic a `break` or `return`, but that's kinda cheating :p.
+
+## Common uses of `reduce` and their alternatives
+
+### Group values by a key
+
+```swift
+let words = ["Apple", "Axe", "Bark", "Bench", "Chair", "Cat"]
+let wordsByFirstLetter = words.reduce(into: [:]) { acc, word in acc[word.first!, default: []].append(word) }
+print(wordsByFirstLetter)
+```
+
+Better alternative: `Dictionary.init(grouping:by:)`
+
+```swift
+let words = ["Apple", "Axe", "Bark", "Bench", "Chair", "Cat"]
+let wordsByFirstLetter = Dictionary(grouping: words, by: { $0.first! })
+print(wordsByFirstLetter)
+```
+
+### Building up a dictionary from a sequence of keys and values
+
+```swift
+let keys = ["a", "b", "c"]
+let values = [1, 2, 3]
+let dict = zip(keys, values).reduce(into: [:]) { acc, pair in acc[pair.0] = pair.1 }
+print(dict)
+```
+
+Better alternative: `Dictionary.init(uniqueKeysWithValues:)`
+
+```swift
+let keys = ["a", "b", "c"]
+let values = [1, 2, 3]
+let dict = Dictionary(uniqueKeysWithValues: zip(keys, values))
+```
+
+### Keeping complex state in the accumulator
+
+I can't think of a concrete example right now, but I've seen people trying to wrangle really complex state (usually a tuple) as the accumulator of a reduction, with the aim of having their entire computation expressed in one expression, like this code to get an array of every other element:
+
+```swift
+array.reduce(into: (toggler: true, result: []) { pair, element in
+    if pair.toggler {
+    	pair.result.append(element)
+    }
+
+    pair.toggler.toggle()
+}.result
+```
+
+Instead, it's nicer to just use local mutable variables to express your state, and only use the accumulator for what matters towards the final result (though using `filter` would be *even* better for this case):
+
+```swift
+var toggler = true
+array.reduce(into: []) { acc, element in
+    if toggler {
+    	acc.append(element)
+    }
+
+    toggler.toggle()
+}
+```
+
+## Appendix: Example Implementations
+
+```swift
 extension Sequence {
 	var shittyFirst: Element? {
 		reduce(nil) { acc, element in acc ?? element }
@@ -118,77 +194,3 @@ print([1, nil, 2, nil, 3].compactMap { $0 })
 print(Array(1...5).shittyPrefix { $0 < 3 })
 print(Array(1...5).shittyPrefix(3))
 ```
-</details>
-
-## Comparison to `forEach`
-
-`reduce` is pretty much exactly as powerful as `forEach`. The `reduce`'s accumulator can be used to maintain state, but you can do that with any old variable, just by capturing in the closure you pass to `forEach`. Neither of these APIs is able to skip iterations or bail early.
-
-In fact, Ruby's `Enumerable` module (their equivalent of Swift's `Sequence` protocol) only requires that you implement an `each` method (equivalent of `forEach`), which they use to implement all other APIs within `Enumerable`. However, this is far from perfect, because it means that even simple operations like `count`, `first`, `last`, `isEmpty`, etc. become `O(n)`. So often times, they'll be implemented separately to take advantage of the implementation details of the particular sequence's implementation, for faster performance.
-
-## Comparison to `for`
-
-`reduce` is not as powerful as `for` loops, however. `for` loops can support `continue`, `break` and `return` (from the parent scope, not merely the `for` loop). You can use `try`/`catch` to mimic a `break` or `return`, but that's kinda cheating :p.
-
-## Common uses of `reduce` and their alternatives
-
-### Group values by a key
-
-``` Swift
-let words = ["Apple", "Axe", "Bark", "Bench", "Chair", "Cat"]
-let wordsByFirstLetter = words.reduce(into: [:]) { acc, word in acc[word.first!, default: []].append(word) }
-print(wordsByFirstLetter)
-```
-
-Better alternative: `Dictionary.init(grouping:by:)`
-
-``` Swift
-let words = ["Apple", "Axe", "Bark", "Bench", "Chair", "Cat"]
-let wordsByFirstLetter = Dictionary(grouping: words, by: { $0.first! })
-print(wordsByFirstLetter)
-```
-
-### Building up a dictionary from a sequence of keys and values
-
-``` Swift
-let keys = ["a", "b", "c"]
-let values = [1, 2, 3]
-let dict = zip(keys, values).reduce(into: [:]) { acc, pair in acc[pair.0] = pair.1 }
-print(dict)
-```
-
-Better alternative: `Dictionary.init(uniqueKeysWithValues:)`
-
-``` Swift
-let keys = ["a", "b", "c"]
-let values = [1, 2, 3]
-let dict = Dictionary(uniqueKeysWithValues: zip(keys, values))
-```
-
-### Keeping complex state in the accumulator
-
-I can't think of a concrete example right now, but I've seen people trying to wrangle really complex state (usually a tuple) as the accumulator of a reduction, with the aim of having their entire computation expressed in one expression, like this code to get an array of every other element:
-
-``` Swift
-array.reduce(into: (toggler: true, result: []) { pair, element in
-    if pair.toggler {
-    	pair.result.append(element)
-    }
-
-    pair.toggler.toggle()
-}.result
-```
-
-Instead, it's nicer to just use local mutable variables to express your state, and only use the accumulator for what matters towards the final result (though using `filter` would be *even* better for this case):
-
-``` Swift
-var toggler = true
-array.reduce(into: []) { acc, element in
-    if toggler {
-    	acc.append(element)
-    }
-
-    toggler.toggle()
-}
-```
-

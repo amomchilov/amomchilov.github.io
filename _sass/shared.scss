@@ -1,0 +1,26 @@
+// The theme's default sidebar is `opaque: 0.75`, and goes to `opaque: 1` when you hover on it.
+// That's mostly nice, but it makes the avatar photo look faded.
+//
+// We can't just set `opacity: 1;` on the photo, because that would make the photo fully opaque within its parent,
+// but the parent is still going to be `opaque: 0.75`. So let's just turn that off.
+//
+// Instead, we disable the transparency on the children, and apply it separately to its non-avatar children.
+.sidebar {
+  @include breakpoint($large) {
+    opacity: unset;
+    -webkit-transition: unset;
+    transition: unset;
+  }
+
+  .author__content, .author__urls-wrapper, .nav__list { // Skip .author__avatar, to keep the photo from fading.
+    opacity: 0.75;
+    -webkit-transition: opacity 0.2s ease-in-out;
+    transition: opacity 0.2s ease-in-out;
+  }
+
+  &:hover {
+    .author__content, .author__urls-wrapper, .nav__list {
+      opacity: 1;
+    }
+  };
+}

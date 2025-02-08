@@ -1,6 +1,8 @@
 ---
-layout: post
+layout: single
 title:  "Proper Array Iteration"
+excerpt: >-
+  You probably don't need the indices.
 date:   2020-06-30 17:48:34 -0500
 ---
 # The bad ways
@@ -11,7 +13,7 @@ Avoid all of these. If you get linked to one of these sections, read the section
 
 There are many loops that can only be structured using a `while` loop, such as reading from a queue until it's empty (whilst concurrently adding to the queue). But if you're using `while` loops and manual counters as a means of iterating all elements of an array, you're doing it wrong. For example:
 
-``` Swift
+```swift
 var counter = 0
 while counter < array.count {
     print(counter, array[counter])
@@ -65,7 +67,7 @@ This is probably *not* what you need. I can't think of many situations in which 
 
 Iterating the indexes of an array when you don't need to, just introduces unnecessary complexity. For example in this code:
 
-``` Swift
+```swift
 let array = ["A", "B", "C" ]
 for i in array.indices {
 	let char = array[i]
@@ -75,7 +77,7 @@ for i in array.indices {
 
 The index `i` isn't actually required. It's only used as a means to an end, to get to `char`. Instead, we can just directly iterate over the elements of the array, skipping the middle man `i`:
 
-``` Swift
+```swift
 let array = ["A", "B", "C" ]
 for char in array {
 	print(char)
@@ -85,7 +87,7 @@ for char in array {
 However, there are times when you *do* also need the index, such as when you want to consume it (e.g. print it for debug information) or use it to mutate the original array. For example:
 
 
-``` Swift
+```swift
 var array = ["A", "B", "C" ]
 for i in array.indices {
 	let char = array[i]
@@ -106,7 +108,7 @@ If you really do need this, the best way to do this is with the built in [`Colle
 
 In the case of `Array`, it simply returns `0..<self.count`. However, other types implement this computed property differently, so that it's always correct. For example, slices start and end at the correct index into their parent container.
 
-``` Swift
+```swift
 let array = ["A", "B", "C" ]
 for i in array.indices {
 	print(i)
@@ -126,7 +128,7 @@ Improvements over the "bad ways":
 
 Use [`Sequence.enumerated()`](https://developer.apple.com/documentation/swift/sequence/1641222-enumerated). It iterates the elements of a sequence, while maintaining a counter for you and providing it to you via its iterator. This counter is an offset from `0`, but ***it is not an index***. It can only be used as an index for collections with zero-based integer indices. That is not the case for many collections, such as `ArraySlice`, `String`, `Set`, etc.
 
-``` Swift
+```swift
 let array = ["A", "B", "C" ]
 for (offset, char) in array.enumerated() {
 	print(offset, char)
@@ -140,7 +142,7 @@ for (offset, char) in array.enumerated() {
 
 Unlike `Sequence.enumerated()`, this technique provides you with indices that are guaranteed to be valid for use with the collection.
 
-``` Swift
+```swift
 let array = ["A", "B", "C" ]
 for (index, char) in zip(array.indices, array) {
 	print(index, char)
@@ -154,7 +156,7 @@ for (index, char) in zip(array.indices, array) {
 ### Best practice: `for element in array { }`
 Keep it simple:
 
-``` Swift
+```swift
 let array = ["A", "B", "C" ]
 for char in array {
 	print(char)

@@ -5,13 +5,13 @@ group :jekyll_plugins do
   # https://github.com/github/pages-gem/blob/master/lib/github-pages/dependencies.rb
   gem "github-pages"
 
+  gem "jekyll-include-cache"
+
   # GitHub Pages run in safe mode, which disables custom plugins.
   # The Favicon generator needs to be run manually when you want to update the favicons,
   # and its generated assets need to be checked in.
   # gem "jekyll-favicon-generator", "~> 0.1.1"
 end
-
-gem "minima", "~> 2.5" # Jekyll's default theme
 
 # Windows and JRuby does not include zoneinfo files, so bundle the tzinfo-data gem
 # and associated library.

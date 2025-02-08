@@ -1,6 +1,8 @@
 ---
-layout: post
-title:  "Dates aren't Strings."
+layout: single
+title:  "Dates aren't Strings"
+excerpt: >-
+  Make your life easier by using native data types wherever available.
 date:   2020-06-30 20:54:09 -0500
 ---
 At least several times a week, I see StackOverflow questions related to the user struggling to do some simple date processing on strings. The solution is always the same, and it's always simple: don't store dates as strings.
