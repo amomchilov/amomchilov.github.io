@@ -33,6 +33,7 @@ linkedin_username: amomchilov
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-favicon-generator
 
 header_pages:
   - about.md
@@ -56,3 +57,32 @@ header_pages:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+favicon-generator:
+  source: assets/favicons/favicon.svg # by default automatically find favicon.* image in source root
+  destination: assets/favicons # where generated favicons are stored
+  color: '#000000' # Foreground color; used in site.webmanifest
+  background: '#ffffff' # Background color; used in site.webmanifest
+  icons:
+  - file: favicon.ico # File name for the icon
+    size: '16,24,32,48' # Sizes to generate; only .ico files can have multiple sizes
+    ref: nil # Always placed in the site root regardless of the destination option
+  - file: favicon-16.png
+    size: 16
+    ref: link/icon # Referenced from a <link rel="icon"> tag
+  - file: favicon-32.png
+    size: 32 # Icons are always square, so only one dimension is necessary
+    ref: link/icon
+  - file: favicon.svg
+    size: nil # Size is ignored for SVG favicons
+    ref: link/icon
+  - file: apple-touch-icon.png
+    size: 180
+    ref: link/apple-touch-icon # Referenced from a <link rel="apple-touch-icon"> tag
+  - file: android-chrome-192.png
+    size: 192
+    ref: manifest # Referenced from a generated site.webmanifest file
+                  # The webmanifest is automatically linked using a <link rel="manifest"> tag
+  - file: android-chrome-512.png
+    size: 512
+    ref: manifest
