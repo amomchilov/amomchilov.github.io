@@ -33,7 +33,7 @@ linkedin_username: amomchilov
 theme: minima
 plugins:
   - jekyll-feed
-  - jekyll-favicon-generator
+  # - jekyll-favicon-generator
 
 header_pages:
   - about.md

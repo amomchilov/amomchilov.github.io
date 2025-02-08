@@ -8,7 +8,7 @@ group :jekyll_plugins do
   # GitHub Pages run in safe mode, which disables custom plugins.
   # The Favicon generator needs to be run manually when you want to update the favicons,
   # and its generated assets need to be checked in.
-  gem "jekyll-favicon-generator", "~> 0.1.1"
+  # gem "jekyll-favicon-generator", "~> 0.1.1"
 end
 
 gem "minima", "~> 2.5" # Jekyll's default theme
