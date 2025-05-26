@@ -14,6 +14,7 @@ sidebar:
       - "/assets/avatar/headshot-original-110x110@3x.jpeg 330w"
       - "/assets/avatar/headshot-original-204x204@1x.jpeg 204w"
       - "/assets/avatar/headshot-original-204x204@2x.jpeg 408w"
+      - "/assets/avatar/headshot-original-204x204@3x.jpeg 612w"
 
   contact_info:
     - font_awesome_icon: "fa-regular fa-envelope"
