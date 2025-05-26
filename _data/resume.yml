@@ -9,7 +9,6 @@ sidebar:
   headshot:
     main: "/assets/avatar/headshot-original.jpeg"
     srcset:
-      - "/assets/avatar/headshot-original.jpeg 1459w"
       - "/assets/avatar/headshot-original-110x110@1x.jpeg 110w"
       - "/assets/avatar/headshot-original-110x110@2x.jpeg 220w"
       - "/assets/avatar/headshot-original-110x110@3x.jpeg 330w"
