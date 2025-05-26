@@ -56,11 +56,9 @@ toc_sticky: true
           <header style="display: contents;">
             <img id="headshot"
               src="{{ sidebar.headshot.main | relative_url }}"
-              srcset="
-              {% for image_src in sidebar.headshot.srcset %}
+              srcset="{% for image_src in sidebar.headshot.srcset -%}
                 {{ image_src }}{% unless forloop.last %}, {% endunless %}
-              {% endfor %}
-              "
+              {%- endfor %}"
               alt="Headshot photo" />
 
             <div id="profile-container">
