@@ -101,7 +101,7 @@ timeline:
         details: |
           I lead the typing group on the Ruby Developer Experience (DX) team, responsible for building tooling that empowers developers to build faster and catch bugs before they hit production. Our work focuses around Sorbet, a static type system for Ruby developed at Stripe. Notable work:
           - Championed the ongoing effort to incorporate [Prism](https://github.com/ruby/rbs) (Ruby's new standard parser) to speed up Sorbet, which also makes it easier to adopt new Ruby syntax as Ruby evolves.
-          - I was a core contributor to integrating [RBS](https://github.com/ruby/rbs) (Ruby's new standard syntax for types) into Sorbet. I will be presenting this work at [RubyKaigi 2025](https://rubykaigi.org/2025/) in Japan, the world's largest Ruby conference.
+          - I was a core contributor to integrating [RBS](https://github.com/ruby/rbs) (Ruby's new standard syntax for types) into Sorbet. I presented this work at [RubyKaigi 2025](/RubyKaigi2025) in Japan, the world's largest Ruby conference.
           - As a maintainer of Tapioca (Shopify's open-source Ruby type-generation tool), I facilitated community contributions, helping many individuals open their first-ever open-source pull requests.
       - title: Senior Software Engineer
         date: { start: "2022-03-01", end: "2024-09-01" }
