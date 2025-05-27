@@ -13,6 +13,10 @@ group :jekyll_plugins do
   # gem "jekyll-favicon-generator", "~> 0.1.1"
 end
 
+group :development do
+  gem "minimal-mistakes-jekyll", "~> 4.27.1"
+end
+
 # Windows and JRuby does not include zoneinfo files, so bundle the tzinfo-data gem
 # and associated library.
 platforms :mingw, :x64_mingw, :mswin, :jruby do
