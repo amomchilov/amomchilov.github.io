@@ -4,7 +4,7 @@ title:  "RubyKaigi 2025 – Migrating RBS's parser to pure C"
 excerpt: >-
   Slides for my conference talk "From C extension to pure C: Migrating RBS."
 date: 2025-04-17 16:20:00 +0900
-last_modified_at: 2025-05-26 20:00:00 -0500
+last_modified_at: 2025-05-31 20:40:00 -0500
 permalink: /RubyKaigi2025
 ---
 
@@ -12,7 +12,10 @@ I had the great pleasure to present my team's work at [RubyKaigi 2025](https://r
 
 ## Video
 
-The RubyKaigi 2025 recordings haven't been published yet. I'll update this as soon as they are!
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/AgY9tm4sBbc?start=4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<br>
+
+Nailed my introduction. 😄
 
 ## Slides
 
