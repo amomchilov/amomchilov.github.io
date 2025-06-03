@@ -4,7 +4,11 @@ title:  "Don't abuse reduce"
 excerpt: >-
  The `reduce` function can express almost anything, so it communicates almost nothing.
 date:   2019-10-24 10:09:42 -0500
+last_modified_at: 2025-06-03 20:00:00 -0500
 ---
+
+Update: I gave a [lightning talk](/RubyConf2022) about this at RubyConf 2022, check it out!
+
 ## First, why `filter(_:)` is so nice
 
 There's an inverse relationship between generality and clarity. APIs that have a single, narrow purpose are very easy to understand from a quick glance. `filter` is one such example. As soon as you see a call to `filter`, and without even looking at the sequence it's called on or the closure it's passed, you can instantly know a few things:
