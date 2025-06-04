@@ -2,7 +2,7 @@
 layout: single
 title:  "RubyKaigi 2025 – Migrating RBS's parser to pure C"
 excerpt: >-
-  Slides for my conference talk "From C extension to pure C: Migrating RBS."
+  My first full-length conference talk, in which I share how we transformed the RBS parser into a pure C library, that can be embedded into any system, even without Ruby!
 date: 2025-04-17 16:20:00 +0900
 last_modified_at: 2025-05-31 20:40:00 -0500
 permalink: /RubyKaigi2025
