@@ -1,5 +1,8 @@
 {
     "cSpell.words": [
+        "compatable",
+        "datasheet",
+        "desolder",
         "endcomment",
         "endfor",
         "favicon",
@@ -9,7 +12,9 @@
         "Kaigi",
         "markdownified",
         "markdownify",
+        "microcontroller",
         "nowrap",
+        "Pinout",
         "Portlets",
         "résumé",
         "Ryerson",
@@ -18,7 +23,10 @@
         "stackoverflow",
         "stylesheet",
         "teleoperated",
+        "UART",
+        "Ubiquiti",
         "Vinicius",
+        "Welp",
         "wordmark"
     ]
 }
